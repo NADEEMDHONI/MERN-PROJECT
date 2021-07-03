@@ -1,6 +1,7 @@
 import react from "react";
 import reactDOM from "react-dom";
-import App from './App';
+
+import App from './App'; 
 import "./index.css";
 import '../src/css.style/Login.css';
 import '../src/css.style/singup.css';
