@@ -3,10 +3,18 @@ import { NavLink } from "react-router-dom";
 import HomeIcon from '@material-ui/icons/Home';
 import MenuIcon from '@material-ui/icons/Menu';
 import InfoIcon from '@material-ui/icons/Info';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { useContext } from "react";
+import { CardContext } from "./CardContext";
 
 const Navbar = () => {
+
+
+  const{cart}=useContext(CardContext);
+
+
   return (
     <>
    
@@ -74,6 +82,17 @@ const Navbar = () => {
                   </li>
                   <li className="nav-item">
                   
+                  </li>
+                  <li className="nav-item">
+                    <NavLink
+                      activeClassName="menu_active"
+                      className="nav-link"
+                      to="/addcard"
+                    >
+                      <span>{cart.totalItems ? cart.totalItems : 0 }</span>
+                   <ShoppingCartIcon/>   Addcard
+                 
+                    </NavLink>
                   </li>
                 </ul>
               </div>

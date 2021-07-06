@@ -9,7 +9,7 @@ const Common = (props) => {
           <div className="row">
             <div className="col-10 mx-auto">
               <div className="row">
-                <div class="col-lg-6   d-flex flex-column justify-content-center">
+                <div className="col-lg-6   d-flex flex-column justify-content-center">
                   <h1>
                     {props.name}
                     <strong className="brand-name"> Nadeem Iphon's</strong>

@@ -211,36 +211,20 @@ figure:hover figcaption{
 
 /* img of menu */
 .imgnadeem{
-  width: 300px; 
-  height: 300px;
+  width: 200px; 
+  height: 200px;
+  
   border-radius: 10px;
    margin-top: 10px;
+   transition: transform .4s;
    justify-content: center;
+}
+.imgnadeem:hover{
+  -ms-transform: scale(1.1); /* IE 9 */
+  -webkit-transform: scale(1.1); /* Safari 3-8 */
+  transform: scale(1.1); 
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
 }
 
 /* product hover */
-/* .container{
-  width: 80%;
-  padding: 20px;
-  margin: 100px auto;
-  background: #ddd;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
 
-.box{
-  width: 150px;
-  height: 150px;
-  background: orange;
-  margin: 0px 10px;
-  transition: 1s;
-
-}
-.box:hover{
-  transform: scale(1.1);
-  background: #ff800a;
-  z-index: 2;
-  box-shadow: 0px 0px 0px #000;
-  
-} */

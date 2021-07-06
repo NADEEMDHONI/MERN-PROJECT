@@ -4,8 +4,12 @@ const router=express.Router();
 
 
 require('../db/conn');
+
 const User = require('../model/userSchema')
 const User2=require('../model/userSchema2')
+const User3=require('../model/productSchema')
+
+// import data from '../data/data';
 router.get('/',(req,res)=>{
     res.send("hi nadeem router");
     });
@@ -97,6 +101,66 @@ router.post('/conduct',async(req,res)=>{
     
     
     })
+
+router.get('/product',async(req,res)=>{
+   try{
+       const aliens=await User3.find()
+       res.json(aliens)
+   }catch(err){
+       res.send('error' + err)
+   }
+
+})
+router.get('/product/:id',async(req,res)=>{
+    try{
+        const aliens=await User3.findById(req.params.id)
+        res.json(aliens)
+    }catch(err){
+        res.send('error' + err)
+    }
+ 
+ })
+
+
+router.post('/product',async(req,res)=>{
+
+    const alien=new User3({
+        name:req.body.name,
+        image:req.body.image,
+        price:req.body.price,
+        model:req.body.model
+    })
+
+    try{
+ const a1= await alien.save()
+ res.json(a1)
+    }catch(err){
+        res.send(err)
+    }
+})
+
+router.post('/product/cart-items/',async(req,res)=>{
+  
+    try{
+        const product=await User3.find()
+        res.send(product)
+    }
+    catch(err){
+console.log(err)
+    }
+})
+
+
+    
+// router.get('/product',async (req, res) => {
+//    try{
+//       const products = await User3.find();
+//       res.send(products);
+//    }catch(err){
+//        console.log(err);
+//    }
+//     }
+//   );
     
 
 module.exports=router;
