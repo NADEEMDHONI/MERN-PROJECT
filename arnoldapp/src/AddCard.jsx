@@ -24,12 +24,13 @@ fetch('/product/cart-items',{
     body: JSON.stringify({ids:Object.keys(cart.items)})
 }).then(res => res.json())
 
-.then(product =>{
-setProduct(product);
+.then(products =>{
+    // console.log(products)
+setProduct(products);
 
 togglePriceFetched(true);
 })
-},[cart]);
+},[cart,priceFetched]);
 const getQty=(productId)=>{
     return cart.items[productId]
 }
@@ -38,18 +39,18 @@ const increment =(productId)=>{
     const existingQty=cart.items[productId]
     const _cart={...cart};
     _cart.items[productId]=existingQty + 1;
-    _cart.totelItems += 1;
+    _cart.totalItems += 1;
     setCart(_cart);
 }
 
 const decrement = (productId)=>{
     const existingQty=cart.items[productId];
     if(existingQty === 1){
-        return
+        return;
     }
     const _cart={...cart};
     _cart.items[productId]=existingQty - 1;
-    _cart.totelItems -= 1;
+    _cart.totalItems -= 1;
     setCart(_cart);
 }
 const getSum=(productId,price)=>{
@@ -62,7 +63,7 @@ const handleDelete=(productId)=>{
  const _cart ={...cart};
  const qty = _cart.items[productId];
  delete _cart.items[productId];
- _cart.titalItems -= qty;
+ _cart.totalItems -= qty;
  setCart(_cart);
 
  const updatedProductsList=products.filter((product)=>product._id !== productId);

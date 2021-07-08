@@ -90,7 +90,7 @@ const Navbar = () => {
                       to="/addcard"
                     >
                       <span>{cart.totalItems ? cart.totalItems : 0 }</span>
-                   <ShoppingCartIcon/>   Addcard
+                   <ShoppingCartIcon/>   cart
                  
                     </NavLink>
                   </li>

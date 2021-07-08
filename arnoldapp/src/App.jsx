@@ -10,7 +10,7 @@ import Login from './Login';
 import Singup from './Singup';
 import AddCard from './AddCard'
 import Singleproduct from './Singleproduct';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, Router } from 'react-router-dom';
 
 import { CardContext} from './CardContext';
 
@@ -33,6 +33,7 @@ const App = () => {
 
     return (
         <>
+        
             <Switch>
             <CardContext.Provider value={{cart ,setCart}}>
             <Route exact path='/' component={Login} />

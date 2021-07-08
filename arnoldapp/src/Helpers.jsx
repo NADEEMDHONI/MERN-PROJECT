@@ -3,6 +3,7 @@ export const getCard = ()=>{
 
     return new Promise((req,res)=>{
         const cart=window.localStorage.getItem('cart');
+        
         req(cart);
     })
    

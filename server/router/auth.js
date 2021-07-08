@@ -139,11 +139,13 @@ router.post('/product',async(req,res)=>{
     }
 })
 
-router.post('/product/cart-items/',async(req,res)=>{
+router.post('/product/cart-items',async(req,res)=>{
   
     try{
-        const product=await User3.find()
-        res.send(product)
+        const product=await User3.find({
+            _id: { $in: req.body.ids },
+        })
+        res.json(product)
     }
     catch(err){
 console.log(err)
