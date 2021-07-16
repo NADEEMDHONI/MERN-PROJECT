@@ -8,6 +8,7 @@ require('../db/conn');
 const User = require('../model/userSchema')
 const User2=require('../model/userSchema2')
 const User3=require('../model/productSchema')
+const User4=require('../model/adminSchema')
 
 // import data from '../data/data';
 router.get('/',(req,res)=>{
@@ -43,9 +44,68 @@ console.log(err);
     }
     
 
+
+    
+
 // console.log(req.body);
 // res.send(req.body)
 });
+
+
+ //ADMIN LOGIN
+
+
+ router.post('/admin', async (req, res) => {
+    const { name , password, cpassword } = req.body
+    if (!name  || !password || !cpassword) {
+        return res.status(422).json({ error: "pls filled the field properly" })
+    }  
+    try{
+     
+             if(password != cpassword){
+                return res.status(422).json({ error: "password not matching" })
+            }else{
+                const user = new User4({ name, password, cpassword });
+
+
+                await user.save();
+              
+                    res.status(201).json({ message: "user register scucessfully" });
+             
+            }
+            
+               
+            
+    }catch(err){
+console.log(err);
+    }
+});
+
+
+//adminlogin
+router.post('/adminlogin',async (req,res)=>{
+  
+
+    try{
+const{name,password}=req.body;
+if(!name || !password){
+    return res.status(400).json({error:"plz fill tha data"})
+}
+const userLogin= await User4.findOne({name:name});
+
+console.log(userLogin);
+
+if(!userLogin){
+    res.status(400).json({error:"user error"})
+}else{
+    res.json({message:"user signin successfully"})
+}
+    }catch(err){
+console.log(err)
+    }
+})
+
+
 //login
 router.post('/signin',async (req,res)=>{
   

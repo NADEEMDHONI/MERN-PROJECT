@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { CardContext } from "./CardContext";
 import { useState } from "react";
@@ -46,11 +46,11 @@ const addtocart=(event,product)=>{
 }
   return (
     <>
-    <Link to={`/menu/${product._id}`}>
+    <NavLink className='no-underline' to={`/menu/${product._id}`}>
     <div>
           <img src={product.image}alt='img'/>
-         <div className='text-center'>
-         <h2 className='text-lg font-bold py-2'>{product.name}</h2>
+         <div className='text-center '>
+         <h2 className='text-lg font-bold py-2 '>{product.name}</h2>
           <span className='bg-gray-200 py-1 rounded-full text-sm px-4'>{product.model}</span>
          </div>
         
@@ -60,7 +60,7 @@ const addtocart=(event,product)=>{
 </div>
       </div>
          
-    </Link>
+    </NavLink>
 
       
     </>

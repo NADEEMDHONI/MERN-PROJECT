@@ -1,5 +1,6 @@
 import react, { useEffect,useState } from 'react';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "../node_modules/bootstrap/dist/js/bootstrap.bundle";
 
 
 import Home from './Home';
@@ -10,6 +11,9 @@ import Login from './Login';
 import Singup from './Singup';
 import AddCard from './AddCard'
 import Singleproduct from './Singleproduct';
+import Adminlogin from './Adminlogin';
+import Adminpage from './Adminpage';
+import Adminsingup from './Adminsingup';
 import { Switch, Route, Redirect, Router } from 'react-router-dom';
 
 import { CardContext} from './CardContext';
@@ -45,7 +49,11 @@ const App = () => {
                 <Route exact path='/login' component={Login} />
                 <Route exact path='/register' component={Singup} />
                 <Route exact path='/addcard' component={AddCard} />
+                <Route exact path='/admin' component={Adminlogin} />
+                <Route exact path='/adminpage' component={Adminpage} />
+                <Route exact path='/adminsingup' component={Adminsingup} />
                 <Route exact path='/menu/:_id' component={Singleproduct}/>
+
                 <Redirect to='/' />
                 </CardContext.Provider>
             </Switch>
