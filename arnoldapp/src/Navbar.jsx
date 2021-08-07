@@ -8,11 +8,13 @@ import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { useContext } from "react";
 import { CardContext } from "./CardContext";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
 
-
+ 
   const{cart}=useContext(CardContext);
+
 
 
   return (
@@ -23,7 +25,7 @@ const Navbar = () => {
           <div className="col-10 mx-auto">
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
               <NavLink exact className="navbar-brand font-weight-bold " to="/">
-              NadeemIphon's
+              NadeemIphone's
               </NavLink>
               <button
                 className="navbar-toggler"
@@ -95,6 +97,7 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                 </ul>
+               
               </div>
             </nav>
           </div>

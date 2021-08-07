@@ -15,12 +15,14 @@ import Adminlogin from './Adminlogin';
 import Adminpage from './Adminpage';
 import Adminsingup from './Adminsingup';
 import { Switch, Route, Redirect, Router } from 'react-router-dom';
+import { selectUser } from './features/userSlice'
+import {useSelector} from 'react-redux';
 
 import { CardContext} from './CardContext';
 
 import {getCard,storeCard} from './Helpers'
 const App = () => {
-
+    const user=useSelector(selectUser)
     const [cart,setCart]=useState({});
     useEffect(()=>{
         getCard() .then(cart =>{
@@ -54,9 +56,11 @@ const App = () => {
                 <Route exact path='/adminsingup' component={Adminsingup} />
                 <Route exact path='/menu/:_id' component={Singleproduct}/>
 
-                <Redirect to='/' />
+           
                 </CardContext.Provider>
             </Switch>
+            
+       
         </>
     )
 };

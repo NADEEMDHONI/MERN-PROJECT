@@ -6,7 +6,8 @@ import Card from "./Card";
 import Sdata from "./Sdata";
 import { useState } from 'react';
 import { CardContext } from './CardContext';
-
+import { useSelector } from 'react-redux';
+import selectUser from './features/userSlice'
 
 const Menu=()=>{
 

@@ -1,11 +1,24 @@
 import react, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 // import '../css.style/Login.css'
 import { NavLink, useHistory } from 'react-router-dom';
+import { login } from './features/userSlice';
 const Login = () => {
 
     const history = useHistory();
+    const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const  dispatch = useDispatch();
+    const handleSubmit=(e)=>{
+        e.preventDefault();
+        dispatch(login({
+          
+            email:email,
+            password:password,
+            loggedIn:true,
+        }))
+    }
     const loginUser = async (e) => {
         e.preventDefault();
 
@@ -27,6 +40,8 @@ const Login = () => {
         }
 
     }
+
+   
     return (
 
         <>
@@ -38,7 +53,8 @@ const Login = () => {
                         <p><NavLink to='/admin'>Adminlogin</NavLink></p>
                     </div>
                     <div className="box">
-                        <form method="POST" className="form">
+                        <form method="POST" className="form" onSubmit={(e)=>handleSubmit(e)} >
+                       
                             <input type="email" className="email" name="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter email" />
 
                             <input type="password" className="password" name="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
@@ -50,6 +66,7 @@ const Login = () => {
                     </div>
                 </div>
             </main>
+       
         </>
     );
 };

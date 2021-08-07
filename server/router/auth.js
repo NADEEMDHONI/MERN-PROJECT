@@ -9,6 +9,7 @@ const User = require('../model/userSchema')
 const User2=require('../model/userSchema2')
 const User3=require('../model/productSchema')
 const User4=require('../model/adminSchema')
+const User5=require('../model/orderSchema')
 
 // import data from '../data/data';
 router.get('/',(req,res)=>{
@@ -225,4 +226,49 @@ console.log(err)
 //   );
     
 
+
+//order
+
+router.post('/adminorder',async(req,res)=>{
+
+    const alien=new User5({
+        name:req.body.name,
+        image:req.body.image,
+        price:req.body.price,
+        model:req.body.model
+    })
+
+    try{
+ const a1= await alien.save()
+ res.json(a1)
+    }catch(err){
+        res.send(err)
+    }
+})
+
+
+
+router.get('/adminorder',async(req,res)=>{
+    try{
+        const aliens=await User5.find()
+        res.json(aliens)
+    }catch(err){
+        res.send('error' + err)
+    }
+ 
+ })
+
+
+ router.delete('/adminorder/:id',async(req,res)=>{
+     try{
+const deleteorder=await User5.findByIdAndDelete(req.params.id);
+if(!req.params.id){
+    return res.status(400).send()
+}
+res.send(deleteorder);
+     }
+     catch(e){
+res.status(500).send(e);
+     }
+ })
 module.exports=router;
